@@ -1,0 +1,14 @@
+versionL: '3.8'
+
+services:
+  db:
+    image: postgres:16.1
+    restart: on-failure
+    environment:
+      POSTGRES_USER: ${DB_ROOT}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - 5436:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data

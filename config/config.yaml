@@ -3,4 +3,4 @@ Server:
 
 DatabaseConnection:
   Attempts: 20
-  Timeout: 1
+  Timeout: 5

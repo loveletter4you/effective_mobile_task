@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "08ad89dc-26a0-4034-9011-6fc0f5ee0b88",
+		"name": "effective_mobile_task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22362266"
+	},
+	"item": [
+		{
+			"name": "Post person without patronymic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Valeriy\",\n    \"surname\":\"Korolev\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post person with patronymic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Valeriy\",\n    \"surname\":\"Korolev\",\n    \"patronymic\":\"Pavlovich\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/person",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get person by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/person/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"person",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get persons with pagination",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete person by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/person/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"person",
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

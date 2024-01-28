@@ -27,7 +27,7 @@ type Config struct {
 
 func NewConfig(configPath string) (*Config, error) {
 	var cfg Config
-	f, err := os.Open("/" + configPath)
+	f, err := os.Open("./" + configPath)
 	if err != nil {
 		return nil, err
 	}

@@ -4,6 +4,16 @@
 ответ наиболее вероятными возрастом, полом и национальностью и сохраняет данные в
 БД. По запросу выдает инфу о найденных людях.
 
+### Деплой
+
+Сначала создать в корне файл .env (пример .env_example) и настроить config.yaml 
+
+Docker-compose команды:
+```
+docker-compose build
+docker-compose up
+```
+
 ### Ручки
 
 Добавить человека
@@ -51,16 +61,6 @@ page, limit - int
 ### Postman collection
 
 Примеры запросов находятся в постман коллекции в файле effective_mobile_task.postman_collection.json
-
-### Деплой
-
-Сначала создать в корне файл .env (пример .env_example) и настроить config.yaml 
-
-Docker-compose команды:
-```
-docker-compose build
-docker-compose up
-```
 
 ### _Сделано:_
 1. Развернута бд и настроен деплой в Docker-compose

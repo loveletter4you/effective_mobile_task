@@ -29,6 +29,7 @@ body: json
 Изменить человека
 ```
 PUT /api/person/:id
+id - int
 body: json
 {
     "name": "Valeriy",

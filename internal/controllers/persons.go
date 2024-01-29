@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"database/sql"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/loveletter4you/effective_mobile_task/internal/model"
 	"github.com/loveletter4you/effective_mobile_task/internal/utils"
@@ -54,6 +55,29 @@ func (ctr *Controller) CreatePerson(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, person)
+}
+
+func (ctr *Controller) UpdatePerson(c *gin.Context) {
+	var personRequest model.Person
+	err := c.BindJSON(&personRequest)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	personRequest.Id = id
+	err = ctr.storage.Person().UpdatePerson(&personRequest)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"message": fmt.Sprintf("user %d updated", personRequest.Id),
+	})
 }
 
 func (ctr *Controller) DeletePerson(c *gin.Context) {

@@ -22,10 +22,10 @@ func (server *HttpServer) Routes() {
 	server.router.Static("/static", "/static")
 	api := server.router.Group("/api")
 	api.POST("/person", server.controller.CreatePerson)
+	api.PUT("/person/:id", server.controller.UpdatePerson)
 	api.DELETE("/person/:id", server.controller.DeletePerson)
 	api.GET("/person/:id", server.controller.GetPerson)
 	api.GET("/person", server.controller.GetPersons)
-
 }
 
 func (server *HttpServer) StartServer(cfg *config.Config) error {

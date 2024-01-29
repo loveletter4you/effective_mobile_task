@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"Valeriy\",\n    \"surname\":\"Korolev\",\n    \"patronymic\":\"Pavlovich\"\n}",
+					"raw": "{\n    \"name\":\"Dmitry\",\n    \"surname\":\"Ushakov\",\n    \"patronymic\":\"Vasil'evich\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +70,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/person/12",
+					"raw": "http://localhost:3000/api/person/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -79,7 +79,7 @@
 					"path": [
 						"api",
 						"person",
-						"12"
+						"2"
 					]
 				}
 			},
@@ -87,9 +87,43 @@
 		},
 		{
 			"name": "Get persons with pagination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/person?page=0&limit=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"person"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -99,7 +133,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/person/12",
+					"raw": "http://localhost:3000/api/person/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -108,7 +142,67 @@
 					"path": [
 						"api",
 						"person",
-						"12"
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update person",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Valeriy\",\n    \"surname\": \"Korolev\",\n    \"age\": 23,\n    \"gender\": \"male\",\n    \"nationality\": \"RU\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/person/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"person",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update person with patronymic",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Valeriy\",\n    \"surname\": \"Korolev\",\n    \"patronymic\": {\n        \"String\": \"Pavlovich\",\n        \"Valid\": true\n    },\n    \"age\": 23,\n    \"gender\": \"male\",\n    \"nationality\": \"RU\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/person/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"person",
+						"6"
 					]
 				}
 			},

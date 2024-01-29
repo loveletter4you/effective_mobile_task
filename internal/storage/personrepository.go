@@ -23,6 +23,22 @@ func (pr *PersonRepository) InsertPerson(person *model.Person) error {
 	return pr.storage.db.QueryRow(query).Scan(&person.Id)
 }
 
+func (pr *PersonRepository) UpdatePerson(person *model.Person) error {
+	var query string
+	if person.Patronymic.Valid == true {
+		query = fmt.Sprintf("UPDATE persons "+
+			"SET name = $$%s$$, surname = $$%s$$, patronymic = $$%s$$, age = %d,nationality = $$%s$$, gender = $$%s$$ "+
+			"WHERE id = %d", person.Name, person.Surname, person.Patronymic.String,
+			person.Age, person.Nationality, person.Gender, person.Id)
+	} else {
+		query = fmt.Sprintf("UPDATE persons "+
+			"SET name = $$%s$$, surname = $$%s$$, age = %d,nationality = $$%s$$, gender = $$%s$$ "+
+			"WHERE id = %d", person.Name, person.Surname,
+			person.Age, person.Nationality, person.Gender, person.Id)
+	}
+	return pr.storage.db.QueryRow(query).Err()
+}
+
 func (pr *PersonRepository) DeletePerson(id int) (*model.Person, error) {
 	query := fmt.Sprintf("DELETE FROM persons WHERE id = %d RETURNING "+
 		"id, name, surname, patronymic, age, nationality, gender", id)
